@@ -1,29 +1,18 @@
-package com.testjavaattornatus.models;
+package com.testjavaattornatus.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.testjavaattornatus.models.Address;
 
-@Entity
-@Table(name = "TB_USER")
-public class User implements Serializable {
+public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
 
 	@NotBlank
 	private String name;
@@ -32,27 +21,17 @@ public class User implements Serializable {
 	@NotNull
 	private LocalDate birthDate;
 
-	@OneToMany(mappedBy = "user")
 	private List<Address> address = new ArrayList<>();
 
-	public User() {
+	public UserDTO() {
 
 	}
 
-	public User(Long id, String name, LocalDate birthDate, List<Address> address) {
+	public UserDTO(@NotBlank String name, @NotBlank LocalDate birthDate, List<Address> address) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.birthDate = birthDate;
 		this.address = address;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {

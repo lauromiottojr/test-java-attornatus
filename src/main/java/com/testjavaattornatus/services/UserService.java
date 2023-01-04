@@ -21,6 +21,10 @@ public class UserService {
 	
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	public User fromDTO(UserDTO userDTO) {
+		return new User(null, userDTO.getName(), userDTO.getBirthDate(), userDTO.getAddress());
+	}
 
 	@Transactional
 	public User saveUser(User user) {
@@ -34,5 +38,5 @@ public class UserService {
 	public Optional<User> findUserById(Long id) {
 		return userRepository.findById(id);
 	}
-
+	
 }

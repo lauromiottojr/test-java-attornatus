@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.testjavaattornatus.models.Address;
+import com.testjavaattornatus.models.User;
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +26,12 @@ public class UserDTO implements Serializable {
 
 	public UserDTO() {
 
+	}
+
+	public UserDTO(User user) {
+		this.name = user.getName();
+		this.birthDate = user.getBirthDate();
+		this.address = user.getAddress();
 	}
 
 	public UserDTO(@NotBlank String name, @NotBlank LocalDate birthDate, List<Address> address) {

@@ -2,14 +2,11 @@ package com.testjavaattornatus.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -32,19 +29,15 @@ public class User implements Serializable {
 	@NotNull
 	private LocalDate birthDate;
 
-	@OneToMany(mappedBy = "user")
-	private List<Address> address = new ArrayList<>();
-
 	public User() {
 
 	}
 
-	public User(Long id, String name, LocalDate birthDate, List<Address> address) {
+	public User(Long id, String name, LocalDate birthDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.birthDate = birthDate;
-		this.address = address;
 	}
 
 	public Long getId() {
@@ -69,14 +62,6 @@ public class User implements Serializable {
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
 	}
 
 }

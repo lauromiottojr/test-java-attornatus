@@ -31,6 +31,7 @@ public class Address implements Serializable {
 
 	@NotBlank
 	private String city;
+	
 	private boolean main;
 
 	@ManyToOne
@@ -92,7 +93,7 @@ public class Address implements Serializable {
 		this.city = city;
 	}
 
-	public boolean isMain() {
+	public boolean getMain() {
 		return main;
 	}
 

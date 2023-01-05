@@ -2,7 +2,6 @@ package com.testjavaattornatus.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -22,8 +21,6 @@ public class UserDTO implements Serializable {
 	@NotNull
 	private LocalDate birthDate;
 
-	private List<Address> address = new ArrayList<>();
-
 	public UserDTO() {
 
 	}
@@ -31,14 +28,12 @@ public class UserDTO implements Serializable {
 	public UserDTO(User user) {
 		this.name = user.getName();
 		this.birthDate = user.getBirthDate();
-		this.address = user.getAddress();
 	}
 
 	public UserDTO(@NotBlank String name, @NotBlank LocalDate birthDate, List<Address> address) {
 		super();
 		this.name = name;
 		this.birthDate = birthDate;
-		this.address = address;
 	}
 
 	public String getName() {
@@ -55,14 +50,6 @@ public class UserDTO implements Serializable {
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
 	}
 
 }

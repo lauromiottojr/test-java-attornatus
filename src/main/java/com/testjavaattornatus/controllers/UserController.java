@@ -42,7 +42,7 @@ public class UserController {
 		List<UserDTO> usersDTO = users.stream().map(obj -> new UserDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(usersDTO);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findUserById(@PathVariable(value = "id") Long id) {
 		Optional<User> userOptional = userService.findUserById(id);
@@ -51,10 +51,9 @@ public class UserController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(userOptional.get());
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updateUser(@PathVariable(value = "id") Long id,
-			@RequestBody @Valid UserDTO userDTO) {
+	public ResponseEntity<Object> updateUser(@PathVariable(value = "id") Long id, @RequestBody @Valid UserDTO userDTO) {
 		Optional<User> userOptional = userService.findUserById(id);
 		if (!userOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado!");

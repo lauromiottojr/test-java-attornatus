@@ -1,5 +1,6 @@
 package com.testjavaattornatus.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -29,6 +30,11 @@ public class AddressService {
 		address.setUser(userOptional.get());
 		address = addressRepository.save(address);
 		return address;
+	}
+
+	public List<Address> findAddressByUser(Long id) {
+		User user = userService.findUserById(id).get();
+		return addressRepository.findByUser(user);
 	}
 
 }
